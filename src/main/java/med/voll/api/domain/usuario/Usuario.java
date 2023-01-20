@@ -26,9 +26,13 @@ public class Usuario implements UserDetails {
     private String login;
     private String senha;
 
+    
+  //Este método serve para indicar se haverar usario Admin e usuário padrão;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    	//indica que é um usuário padrão
+    	return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+    	
     }
 
     @Override
@@ -60,4 +64,14 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+	public Usuario(String login2, String senha2) {
+		this.login = login2;
+		this.senha = senha2;
+	}
+
+	public void setSenha(String string) {
+		this.senha = string;
+		
+	}
 }

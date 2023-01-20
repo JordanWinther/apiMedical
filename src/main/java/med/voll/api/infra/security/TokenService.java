@@ -22,9 +22,10 @@ public class TokenService {
         try {
             var algoritmo = Algorithm.HMAC256(secret);
             return JWT.create()
-                    .withIssuer("API Voll.med")
-                    .withSubject(usuario.getLogin())
+                    .withIssuer("API Voll.med")     //Quem criou o token
+                    .withSubject(usuario.getLogin())//identificacao do token
                     .withExpiresAt(dataExpiracao())
+                  //.withClaim("","") 				  Para adicionar mais alguma info ao token
                     .sign(algoritmo);
         } catch (JWTCreationException exception){
             throw new RuntimeException("erro ao gerar token jwt", exception);
